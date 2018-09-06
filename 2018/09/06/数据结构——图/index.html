@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="算法," />
+  <meta name="keywords" content="数据结构,图," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="keywords" content="算法">
+<meta name="description" content="最后更新时间： 2018/09/06 09:48">
+<meta name="keywords" content="数据结构,图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法">
-<meta property="og:url" content="https://flyme6.github.io/2018/08/22/算法/index.html">
+<meta property="og:title" content="数据结构——图">
+<meta property="og:url" content="https://flyme6.github.io/2018/09/06/数据结构——图/index.html">
 <meta property="og:site_name" content="flyme-星辰">
+<meta property="og:description" content="最后更新时间： 2018/09/06 09:48">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img0.dili360.com/ga/M01/34/17/wKgBy1SzO_CAPBG3AA97r5-i0rE088.tub.jpg@!rw17">
-<meta property="og:updated_time" content="2018-08-29T07:19:28.526Z">
+<meta property="og:image" content="http://img0.dili360.com/pic/2018/08/30/5b875def646ed1924813131_t.jpg@!rw9">
+<meta property="og:updated_time" content="2018-09-06T03:54:24.802Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法">
-<meta name="twitter:image" content="http://img0.dili360.com/ga/M01/34/17/wKgBy1SzO_CAPBG3AA97r5-i0rE088.tub.jpg@!rw17">
+<meta name="twitter:title" content="数据结构——图">
+<meta name="twitter:description" content="最后更新时间： 2018/09/06 09:48">
+<meta name="twitter:image" content="http://img0.dili360.com/pic/2018/08/30/5b875def646ed1924813131_t.jpg@!rw9">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://flyme6.github.io/2018/08/22/算法/"/>
+  <link rel="canonical" href="https://flyme6.github.io/2018/09/06/数据结构——图/"/>
 
 
 
 
 
-  <title>算法 | flyme-星辰</title>
+  <title>数据结构——图 | flyme-星辰</title>
   
 
 
@@ -272,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://flyme6.github.io/2018/08/22/算法/">
+    <link itemprop="mainEntityOfPage" href="https://flyme6.github.io/2018/09/06/数据结构——图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="flyme">
@@ -289,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构——图</h1>
         
 
         <div class="post-meta">
@@ -301,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T09:46:00+08:00">
-                2018-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T09:47:33+08:00">
+                2018-09-06
               </time>
             
 
@@ -361,17 +364,32 @@
       
 
       
-        <p><img src="http://img0.dili360.com/ga/M01/34/17/wKgBy1SzO_CAPBG3AA97r5-i0rE088.tub.jpg@!rw17" width="500" height="400"></p>
+        <p><img src="http://img0.dili360.com/pic/2018/08/30/5b875def646ed1924813131_t.jpg@!rw9" width="500" height="400"></p>
+<p>最后更新时间： 2018/09/06 09:48 </p>
 <a id="more"></a>
-<pre><code>算法依赖于数据结构
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><pre><code>线性结构研究的是一对一的关系
 
-直接插入排序、堆排序
+树形结构研究的是一对多的关系
+</code></pre><p>图研究的是数据元素之间多对多的关系</p>
+<h3 id="有向图-和-无向图"><a href="#有向图-和-无向图" class="headerlink" title="有向图 和 无向图"></a>有向图 和 无向图</h3><h3 id="最小生成树（满足最小代价）、最短路径的意义和算法思想"><a href="#最小生成树（满足最小代价）、最短路径的意义和算法思想" class="headerlink" title="最小生成树（满足最小代价）、最短路径的意义和算法思想"></a>最小生成树（满足最小代价）、最短路径的意义和算法思想</h3><h3 id="图的存储方式和图的遍历"><a href="#图的存储方式和图的遍历" class="headerlink" title="图的存储方式和图的遍历"></a>图的存储方式和图的遍历</h3><h4 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h4><h4 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>对1个源点S，先访问它，接着遍历它的邻接表s.adj，先出现的先访问，如果s.adj被耗尽，递归返回到s所属于的邻接表所关联的源点s’</p>
+<p>s是s’的邻接点</p>
+<p>应用例子：</p>
+<p>社交网络，朋友之间的一切关系。</p>
+<p>路由当中的网络的一个节点。</p>
+<p>地图应用中这个路口、建筑、地标、路很多</p>
+<h4 id="邻接表法："><a href="#邻接表法：" class="headerlink" title="邻接表法："></a>邻接表法：</h4><pre><code>用一个数组存储所有的顶点，对每个顶点，用一个链表存储该点的临接点。
+</code></pre><h4 id="邻接矩阵法："><a href="#邻接矩阵法：" class="headerlink" title="邻接矩阵法："></a>邻接矩阵法：</h4><pre><code>使用一个二维数组A[][],对于一个边(u,v)，置A[u][v]=1,否则就置A[u][v]=0
 
-算法的衡量标准：时间复杂度和空间复杂度
+对于带权图，可以置A[u][v]=weight,weight表示权重。
 
-算法的用处：给出问题的解，提升效率
-</code></pre><!--more-->
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h2><h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2><h2 id="寻路"><a href="#寻路" class="headerlink" title="寻路"></a>寻路</h2><h2 id="分治-思想"><a href="#分治-思想" class="headerlink" title="分治 思想"></a>分治 思想</h2><h2 id="归并-思想"><a href="#归并-思想" class="headerlink" title="归并 思想"></a>归并 思想</h2><h2 id="递归-思想"><a href="#递归-思想" class="headerlink" title="递归 思想"></a>递归 思想</h2>
+优点：直观，适合稠密图
+
+缺点:如果图的变数很少，或者说图是稀疏的，浪费很多空间
+
+将图看作为二元组，V(vertex)是定点集，E(edge)是边集，每条边就是一个顶点对(v,w)
+</code></pre><p>生成树是包含了图的所有顶点的连通子图</p>
+<h4 id="TSP（旅行商）的问题"><a href="#TSP（旅行商）的问题" class="headerlink" title="TSP（旅行商）的问题"></a>TSP（旅行商）的问题</h4><p>并利用只能搜索算法中的遗传算法求TSP问题的近似解。结合图中最优路径、NP难题以及智能算法的扩展。</p>
+
       
     </div>
     
@@ -388,7 +406,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/图/" rel="tag"># 图</a>
           
         </div>
       
@@ -401,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/21/数据结构Java/" rel="next" title="数据结构Java">
-                <i class="fa fa-chevron-left"></i> 数据结构Java
+              <a href="/2018/08/29/Centso7下Crontab命令定时使用/" rel="next" title="Centso7下Crontab命令定时使用">
+                <i class="fa fa-chevron-left"></i> Centso7下Crontab命令定时使用
               </a>
             
           </div>
@@ -410,10 +430,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/22/hadoop随记/" rel="prev" title="hadoop随记">
-                hadoop随记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -549,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找"><span class="nav-number">2.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最短路径"><span class="nav-number">3.</span> <span class="nav-text">最短路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩"><span class="nav-number">4.</span> <span class="nav-text">压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻路"><span class="nav-number">5.</span> <span class="nav-text">寻路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分治-思想"><span class="nav-number">6.</span> <span class="nav-text">分治 思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并-思想"><span class="nav-number">7.</span> <span class="nav-text">归并 思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归-思想"><span class="nav-number">8.</span> <span class="nav-text">递归 思想</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图"><span class="nav-number">1.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有向图-和-无向图"><span class="nav-number">1.1.</span> <span class="nav-text">有向图 和 无向图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树（满足最小代价）、最短路径的意义和算法思想"><span class="nav-number">1.2.</span> <span class="nav-text">最小生成树（满足最小代价）、最短路径的意义和算法思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图的存储方式和图的遍历"><span class="nav-number">1.3.</span> <span class="nav-text">图的存储方式和图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">1.3.1.</span> <span class="nav-text">广度优先搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">1.3.2.</span> <span class="nav-text">深度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">概念</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#邻接表法："><span class="nav-number">1.3.3.</span> <span class="nav-text">邻接表法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#邻接矩阵法："><span class="nav-number">1.3.4.</span> <span class="nav-text">邻接矩阵法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TSP（旅行商）的问题"><span class="nav-number">1.3.5.</span> <span class="nav-text">TSP（旅行商）的问题</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
