@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="代码规范," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最后更新时间：2018/11/18 17:45">
+<meta name="keywords" content="代码规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通信中间件ICE3.6.4版本安装以及demo测试">
+<meta property="og:url" content="https://flyme6.github.io/2018/11/18/通信中间件ICE3-6-4版本安装以及demo测试/index.html">
+<meta property="og:site_name" content="flyme-星辰">
+<meta property="og:description" content="最后更新时间：2018/11/18 17:45">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img0.dili360.com/ga/M00/01/F9/wKgBzFQ2wYiAIp-5AAqaNCEFiqM014.jpg@!rw17">
+<meta property="og:updated_time" content="2018-11-18T09:42:20.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通信中间件ICE3.6.4版本安装以及demo测试">
+<meta name="twitter:description" content="最后更新时间：2018/11/18 17:45">
+<meta name="twitter:image" content="http://img0.dili360.com/ga/M00/01/F9/wKgBzFQ2wYiAIp-5AAqaNCEFiqM014.jpg@!rw17">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://flyme6.github.io/2018/11/18/通信中间件ICE3-6-4版本安装以及demo测试/"/>
+
+
+
+
+
+  <title>通信中间件ICE3.6.4版本安装以及demo测试 | flyme-星辰</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">flyme-星辰</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">简单即美，keep it simple and stupid</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://flyme6.github.io/2018/11/18/通信中间件ICE3-6-4版本安装以及demo测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="flyme">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/31469516">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="flyme-星辰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">通信中间件ICE3.6.4版本安装以及demo测试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T17:39:28+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/flyme/" itemprop="url" rel="index">
+                    <span itemprop="name">flyme</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://img0.dili360.com/ga/M00/01/F9/wKgBzFQ2wYiAIp-5AAqaNCEFiqM014.jpg@!rw17" width="500" height="400"></p>
+<p> 最后更新时间：2018/11/18 17:45  </p>
+<a id="more"></a>
+<h3 id="下载3-6-4版本："><a href="#下载3-6-4版本：" class="headerlink" title="下载3.6.4版本："></a>下载3.6.4版本：</h3><p><a href="https://zeroc.com/download/Ice/3.6/Ice-3.6.4.msi" target="_blank" rel="noopener">https://zeroc.com/download/Ice/3.6/Ice-3.6.4.msi</a></p>
+<p>一直默认，即可，需要把demo 也安装上</p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><pre><code>ICE_HOME：D:\ZeroC\Ice-3.6.4
+
+Path：%ICE_HOME%/bin;
+
+CLASSPATH：%ICE_HOME%\lib\Ice.jar;%ICE_HOME%\lib\Freeze.jar;%ICE_HOME%\lib\db.jar;
+</code></pre><h3 id="CMD输入：icegridnode-–version"><a href="#CMD输入：icegridnode-–version" class="headerlink" title="CMD输入：icegridnode –version"></a>CMD输入：icegridnode –version</h3><p>出现版本号即可，安装成功，3.6.4，配置环境完成。</p>
+<h3 id="运行简单demo"><a href="#运行简单demo" class="headerlink" title="运行简单demo"></a>运行简单demo</h3><p>准备物料</p>
+<ul>
+<li>在eclipse中安装ice插件</li>
+<li>新建java工程，并且在其下，新建slice文件夹，便于分类，一般放入.ice文件。</li>
+<li>jar包 <strong>ice-3.6.4.jar</strong>，<strong>icebox-3.6.4.jar</strong>，<strong>icegrid-3.6.4.jar</strong></li>
+<li></li>
+</ul>
+<p>直接<a href="https://blog.csdn.net/qq_31678877/article/details/52980516" target="_blank" rel="noopener">传送门</a>，方可开启。</p>
+<h4 id="ice文件"><a href="#ice文件" class="headerlink" title=".ice文件"></a>.ice文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[[&quot;java:package:com.flyme.service&quot;]] // 定义java包名  </span><br><span class="line">module demo  </span><br><span class="line">&#123;  </span><br><span class="line">    interface Hello   </span><br><span class="line">    &#123;  </span><br><span class="line">        string sayHello(string s);  </span><br><span class="line">    &#125;;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>.编写ICE的具体处理业务的类，ICE叫做Servant。起名规则一般是.ice文件中定义的接口名称后边加上一个I。</p>
+<h4 id="HelloI-java"><a href="#HelloI-java" class="headerlink" title="HelloI.java"></a>HelloI.java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class HelloI extends _HelloDisp &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String sayHello(String s, Current __current) &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        return &quot;Hello :&quot; + s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="服务端Service-java"><a href="#服务端Service-java" class="headerlink" title="服务端Service.java"></a>服务端Service.java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public class Service &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int status = 0;</span><br><span class="line">        // Communicator实例，是ice run time的主句柄</span><br><span class="line">        Ice.Communicator ic = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(&quot;Server starting...&quot;);</span><br><span class="line">            // 调用Ice.Util.Initialize()初始化Ice run time</span><br><span class="line">            ic = Ice.Util.initialize(args);</span><br><span class="line">            // 创建一个对象适配器，传入适配器名字和在12000端口处接收来的请求</span><br><span class="line">            Ice.ObjectAdapter adapter = ic.createObjectAdapterWithEndpoints(&quot;HelloAdapter&quot;, &quot;default -p 12000&quot;);</span><br><span class="line">            // 实例化一个PrinterI对象，为Printer接口创建一个servant</span><br><span class="line">            Ice.Object object = new HelloI();</span><br><span class="line">            // 调用适配器的add,告诉它有一个新的servant,传递的参数是刚才的servant,这里的“hello”是Servant的名字</span><br><span class="line">            adapter.add(object, ic.stringToIdentity(&quot;hello&quot;));</span><br><span class="line">            // 调用适配器的activate()方法，激活适配器。被激活后，服务器开始处理来自客户的请求。</span><br><span class="line">            adapter.activate();</span><br><span class="line">            System.out.println(&quot;ICE服务端已经准备完毕&quot;);</span><br><span class="line">            System.out.println(&quot;Server start success.&quot;);</span><br><span class="line">            // 这个方法挂起发出调用的线程，直到服务器实现终止为止。或我们自己发出一个调用关闭。</span><br><span class="line">            ic.waitForShutdown();</span><br><span class="line">        &#125; catch (Ice.LocalException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            status = 1;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            System.err.println(e.getMessage());</span><br><span class="line">            status = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (ic != null) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                ic.destroy();</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                System.err.println(e.getMessage());</span><br><span class="line">                status = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.exit(status);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="客户端Client-java"><a href="#客户端Client-java" class="headerlink" title="客户端Client.java"></a>客户端Client.java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int status = 0;</span><br><span class="line">        // Communicator实例</span><br><span class="line">        Ice.Communicator ic = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            // 调用Ice.Util.Initialize()初始化Ice run time</span><br><span class="line">            ic = Ice.Util.initialize(args);</span><br><span class="line">            // 获取远地打印机的代理</span><br><span class="line">            Ice.ObjectPrx base = ic.stringToProxy(&quot;hello:default -p 12000&quot;);</span><br><span class="line">            // 将上面的代理向下转换成一个Printer接口的代理</span><br><span class="line">            HelloPrx hello = HelloPrxHelper.checkedCast(base);</span><br><span class="line">            // 如果转换成功</span><br><span class="line">            if (hello == null) &#123;</span><br><span class="line">                throw new Error(&quot;Invalid proxy&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            // 调用这个代理，将字符串传给它</span><br><span class="line">            String s = hello.sayHello(&quot;World!&quot;);</span><br><span class="line">            System.out.println(&quot;&gt;&gt;&quot; + s);</span><br><span class="line">        &#125; catch (Ice.LocalException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            status = 1;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            System.err.println(e.getMessage());</span><br><span class="line">            status = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (ic != null) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                ic.destroy();</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                System.err.println(e.getMessage());</span><br><span class="line">                status = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.exit(status);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，我们先在Eclipse中运行我们自己编Service.java代码，然后再运行client.java代码。然后我们就可以在控制台看见自己在HelloI中输出的语句了</p>
+<p>如果测试第二次，显示端口占用，由于我使用的Windows开发，</p>
+<p>打开cmd，系统当前所有的端口使用情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure></p>
+<p>杀掉进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /f /t /im &quot;进程id或者进程名称&quot;</span><br></pre></td></tr></table></figure>
+<p>又可以进行测试了</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/代码规范/" rel="tag"># 代码规范</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/15/数据结构（二）———线性表和线性表的顺序存储结构/" rel="next" title="数据结构（二）———线性表和线性表的顺序存储结构">
+                <i class="fa fa-chevron-left"></i> 数据结构（二）———线性表和线性表的顺序存储结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars2.githubusercontent.com/u/31469516"
+                alt="flyme" />
+            
+              <p class="site-author-name" itemprop="name">flyme</p>
+              <p class="site-description motion-element" itemprop="description">keep it simple and stupid</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载3-6-4版本："><span class="nav-number">1.</span> <span class="nav-text">下载3.6.4版本：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量"><span class="nav-number">2.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CMD输入：icegridnode-–version"><span class="nav-number">3.</span> <span class="nav-text">CMD输入：icegridnode –version</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行简单demo"><span class="nav-number">4.</span> <span class="nav-text">运行简单demo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ice文件"><span class="nav-number">4.1.</span> <span class="nav-text">.ice文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HelloI-java"><span class="nav-number">4.2.</span> <span class="nav-text">HelloI.java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务端Service-java"><span class="nav-number">4.3.</span> <span class="nav-text">服务端Service.java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端Client-java"><span class="nav-number">4.4.</span> <span class="nav-text">客户端Client.java</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">flyme</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
