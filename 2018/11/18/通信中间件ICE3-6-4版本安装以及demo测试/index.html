@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="最后更新时间：2018/11/18 17:45">
+<meta name="description" content="网络通信引擎（ ice ）为获取远程通信对象 提供了工具、API 和库支持。    第一次更新时间：2018/11/18 17:45    第二次更新时间：2018/11/19 14:30，修改部分内容。">
 <meta name="keywords" content="中间件,ice,rpc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通信中间件ICE3.6.4版本安装以及demo测试">
 <meta property="og:url" content="https://flyme6.github.io/2018/11/18/通信中间件ICE3-6-4版本安装以及demo测试/index.html">
 <meta property="og:site_name" content="flyme-星辰">
-<meta property="og:description" content="最后更新时间：2018/11/18 17:45">
+<meta property="og:description" content="网络通信引擎（ ice ）为获取远程通信对象 提供了工具、API 和库支持。    第一次更新时间：2018/11/18 17:45    第二次更新时间：2018/11/19 14:30，修改部分内容。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img0.dili360.com/ga/M00/01/F9/wKgBzFQ2wYiAIp-5AAqaNCEFiqM014.jpg@!rw17">
-<meta property="og:updated_time" content="2018-11-18T09:55:25.159Z">
+<meta property="og:updated_time" content="2018-11-20T06:30:41.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通信中间件ICE3.6.4版本安装以及demo测试">
-<meta name="twitter:description" content="最后更新时间：2018/11/18 17:45">
+<meta name="twitter:description" content="网络通信引擎（ ice ）为获取远程通信对象 提供了工具、API 和库支持。    第一次更新时间：2018/11/18 17:45    第二次更新时间：2018/11/19 14:30，修改部分内容。">
 <meta name="twitter:image" content="http://img0.dili360.com/ga/M00/01/F9/wKgBzFQ2wYiAIp-5AAqaNCEFiqM014.jpg@!rw17">
 
 
@@ -364,8 +364,12 @@
       
 
       
-        <p><img src="http://img0.dili360.com/ga/M00/01/F9/wKgBzFQ2wYiAIp-5AAqaNCEFiqM014.jpg@!rw17" width="500" height="400"></p>
-<p> 最后更新时间：2018/11/18 17:45  </p>
+        <blockquote>
+<p>网络通信引擎（ ice ）为获取远程通信对象 提供了工具、API 和库支持。</p>
+</blockquote>
+<p><img src="http://img0.dili360.com/ga/M00/01/F9/wKgBzFQ2wYiAIp-5AAqaNCEFiqM014.jpg@!rw17" width="500" height="400"></p>
+<p> 第一次更新时间：2018/11/18 17:45  </p>
+<p> 第二次更新时间：2018/11/19 14:30，修改部分内容。  </p>
 <a id="more"></a>
 <h3 id="下载3-6-4版本："><a href="#下载3-6-4版本：" class="headerlink" title="下载3.6.4版本："></a>下载3.6.4版本：</h3><p><a href="https://zeroc.com/download/Ice/3.6/Ice-3.6.4.msi" target="_blank" rel="noopener">https://zeroc.com/download/Ice/3.6/Ice-3.6.4.msi</a></p>
 <p>一直默认，即可，需要把demo 也安装上</p>
@@ -389,8 +393,7 @@ CLASSPATH：%ICE_HOME%\lib\Ice.jar;%ICE_HOME%\lib\Freeze.jar;%ICE_HOME%\lib\db.j
 <h4 id="服务端Service-java"><a href="#服务端Service-java" class="headerlink" title="服务端Service.java"></a>服务端Service.java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public class Service &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int status = 0;</span><br><span class="line">        // Communicator实例，是ice run time的主句柄</span><br><span class="line">        Ice.Communicator ic = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(&quot;Server starting...&quot;);</span><br><span class="line">            // 调用Ice.Util.Initialize()初始化Ice run time</span><br><span class="line">            ic = Ice.Util.initialize(args);</span><br><span class="line">            // 创建一个对象适配器，传入适配器名字和在12000端口处接收来的请求</span><br><span class="line">            Ice.ObjectAdapter adapter = ic.createObjectAdapterWithEndpoints(&quot;HelloAdapter&quot;, &quot;default -p 12000&quot;);</span><br><span class="line">            // 实例化一个PrinterI对象，为Printer接口创建一个servant</span><br><span class="line">            Ice.Object object = new HelloI();</span><br><span class="line">            // 调用适配器的add,告诉它有一个新的servant,传递的参数是刚才的servant,这里的“hello”是Servant的名字</span><br><span class="line">            adapter.add(object, ic.stringToIdentity(&quot;hello&quot;));</span><br><span class="line">            // 调用适配器的activate()方法，激活适配器。被激活后，服务器开始处理来自客户的请求。</span><br><span class="line">            adapter.activate();</span><br><span class="line">            System.out.println(&quot;ICE服务端已经准备完毕&quot;);</span><br><span class="line">            System.out.println(&quot;Server start success.&quot;);</span><br><span class="line">            // 这个方法挂起发出调用的线程，直到服务器实现终止为止。或我们自己发出一个调用关闭。</span><br><span class="line">            ic.waitForShutdown();</span><br><span class="line">        &#125; catch (Ice.LocalException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            status = 1;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            System.err.println(e.getMessage());</span><br><span class="line">            status = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (ic != null) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                ic.destroy();</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                System.err.println(e.getMessage());</span><br><span class="line">                status = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.exit(status);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="客户端Client-java"><a href="#客户端Client-java" class="headerlink" title="客户端Client.java"></a>客户端Client.java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int status = 0;</span><br><span class="line">        // Communicator实例</span><br><span class="line">        Ice.Communicator ic = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            // 调用Ice.Util.Initialize()初始化Ice run time</span><br><span class="line">            ic = Ice.Util.initialize(args);</span><br><span class="line">            // 获取远地打印机的代理</span><br><span class="line">            Ice.ObjectPrx base = ic.stringToProxy(&quot;hello:default -p 12000&quot;);</span><br><span class="line">            // 将上面的代理向下转换成一个Printer接口的代理</span><br><span class="line">            HelloPrx hello = HelloPrxHelper.checkedCast(base);</span><br><span class="line">            // 如果转换成功</span><br><span class="line">            if (hello == null) &#123;</span><br><span class="line">                throw new Error(&quot;Invalid proxy&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            // 调用这个代理，将字符串传给它</span><br><span class="line">            String s = hello.sayHello(&quot;World!&quot;);</span><br><span class="line">            System.out.println(&quot;&gt;&gt;&quot; + s);</span><br><span class="line">        &#125; catch (Ice.LocalException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            status = 1;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            System.err.println(e.getMessage());</span><br><span class="line">            status = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (ic != null) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                ic.destroy();</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                System.err.println(e.getMessage());</span><br><span class="line">                status = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.exit(status);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后，我们先在Eclipse中运行我们自己编Service.java代码，然后再运行client.java代码。然后我们就可以在控制台看见自己在HelloI中输出的语句了</p>
-<p>如果测试第二次，显示端口占用，由于我使用的Windows开发，</p>
-<p>打开cmd，系统当前所有的端口使用情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure></p>
+<p>如果测试第二次，显示端口占用，在idea中杀掉进程，或者打开cmd，系统当前所有的端口使用情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure></p>
 <p>杀掉进程</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /f /t /im &quot;进程id或者进程名称&quot;</span><br></pre></td></tr></table></figure>
 <p>又可以进行测试了</p>
@@ -521,7 +524,7 @@ CLASSPATH：%ICE_HOME%\lib\Ice.jar;%ICE_HOME%\lib\Freeze.jar;%ICE_HOME%\lib\db.j
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -543,7 +546,7 @@ CLASSPATH：%ICE_HOME%\lib\Ice.jar;%ICE_HOME%\lib\Freeze.jar;%ICE_HOME%\lib\db.j
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
