@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="flyme, 星辰" />
+  <meta name="keywords" content="域对象,隐式对象," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="keep it simple and stupid">
-<meta name="keywords" content="flyme">
+<meta name="description" content="四大域对象  page域、request域、session域、application域 九大隐式对象 request、response、session、application、config、page、pageContext、out、exception 最后更新时间： 2019年1月13日22:55:39">
+<meta name="keywords" content="域对象,隐式对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java四大域对象总结">
 <meta property="og:url" content="https://flyme6.github.io/2019/01/04/java四大域对象总结/index.html">
 <meta property="og:site_name" content="flyme-星辰">
-<meta property="og:description" content="keep it simple and stupid">
+<meta property="og:description" content="四大域对象  page域、request域、session域、application域 九大隐式对象 request、response、session、application、config、page、pageContext、out、exception 最后更新时间： 2019年1月13日22:55:39">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-04T03:31:03.836Z">
+<meta property="og:updated_time" content="2019-01-13T14:56:45.676Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java四大域对象总结">
-<meta name="twitter:description" content="keep it simple and stupid">
+<meta name="twitter:description" content="四大域对象  page域、request域、session域、application域 九大隐式对象 request、response、session、application、config、page、pageContext、out、exception 最后更新时间： 2019年1月13日22:55:39">
 
 
 
@@ -313,6 +313,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/flyme/" itemprop="url" rel="index">
+                    <span itemprop="name">flyme</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -340,7 +362,80 @@
       
 
       
-        
+        <p>四大域对象</p>
+<p> page域、request域、session域、application域</p>
+<p>九大隐式对象</p>
+<p><strong>request</strong>、<strong>response</strong>、<strong>session</strong>、<strong>application</strong>、<strong>config</strong>、<strong>page</strong>、<strong>pageContext</strong>、<strong>out</strong>、<strong>exception</strong></p>
+<p>最后更新时间： 2019年1月13日22:55:39</p>
+<a id="more"></a>
+<h1 id="四大域对象"><a href="#四大域对象" class="headerlink" title="四大域对象"></a>四大域对象</h1><p>根据作用范围由小到大：</p>
+<ul>
+<li><p>page(jsp有效)   page域指的是pageContext.</p>
+</li>
+<li><p>request(一次请求)   request域request HttpServletContext</p>
+</li>
+<li><p>session(一次会话)   session域session HttpSession</p>
+</li>
+<li><p>application(当前web应用)    application域指的是application  ServletContext；</p>
+</li>
+</ul>
+<p>之所以他们是域对象，原因是他们都内置了map集合，都有setAttribute和getAttribute方法。</p>
+<h1 id="PageContext域"><a href="#PageContext域" class="headerlink" title="PageContext域"></a>PageContext域</h1><h2 id="1-生命周期："><a href="#1-生命周期：" class="headerlink" title="1.生命周期："></a>1.生命周期：</h2><p>当对JSP的请求开始，当相应结束时销毁。</p>
+<p>  jsp页面被执行，声明周期开始；</p>
+<p>  jsp页面执行完毕，声明周期结束；</p>
+<h2 id="2-作用范围："><a href="#2-作用范围：" class="headerlink" title="2.作用范围："></a>2.作用范围：</h2><p>整个JSP页面，是四大作用域中最小的一个。</p>
+<h2 id="3-作用："><a href="#3-作用：" class="headerlink" title="3.作用："></a>3.作用：</h2><ul>
+<li>获取其它八大隐式对象，可以认为是一个入口对象。 </li>
+<li>获取其所有域中的数据    </li>
+<li>pageContext 操作所有域中属性的方法    </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public java.lang.Object** getAttribute**(java.lang.String name,int scope)     </span><br><span class="line"></span><br><span class="line">public void **setAttribute**(java.lang.String name, java.lang.Object value,int scope)   </span><br><span class="line"></span><br><span class="line">public void **removeAttribute**(java.lang.String name,int scope)</span><br></pre></td></tr></table></figure>
+<h3 id="pageContext-中代表域的常量"><a href="#pageContext-中代表域的常量" class="headerlink" title="pageContext 中代表域的常量"></a>pageContext 中代表域的常量</h3><ul>
+<li>PageContext.APPLICATION_SCOPE   </li>
+<li>PageContext.SESSION_SCOPE    </li>
+<li>PageContext.REQUEST_SCOPE    </li>
+<li>PageContext.PAGE_SCOPE    
+　　　</li>
+</ul>
+<p>findAttribute方法,在四大域中搜寻属性，搜寻的顺序是page域、request域、session域、application域，从小域到大域开始搜索，如果搜索到就直接获取该值，如果所有域中都找不到，返回一个null(与el表达式不同，此处返回null，对网页是不友好的) </p>
+<p>（3）跳转到其他资源      </p>
+<p>其身上提供了forward和include方法，简化重定向和转发的操作
+　　　</p>
+<h1 id="二、Request域"><a href="#二、Request域" class="headerlink" title="二、Request域"></a>二、Request域</h1><h2 id="1-生命周期：-1"><a href="#1-生命周期：-1" class="headerlink" title="1.生命周期："></a>1.生命周期：</h2><p>在Service方法调用前由服务器创建，传入service方法。整个请求结束，request生命结束。用户发送一个请求，开始，服务器返回响应，请求结束，生命周期结束；</p>
+<h2 id="2-作用范围：-1"><a href="#2-作用范围：-1" class="headerlink" title="2.作用范围："></a>2.作用范围：</h2><p>整个请求链（请求转发也存在）</p>
+<h2 id="3-作用：-1"><a href="#3-作用：-1" class="headerlink" title="3.作用："></a>3.作用：</h2><p>在整个请求链中共享数据，经常用到：在servlet中处理好的数据交给JSP显示，此时参数就可以放在Request域中。</p>
+<h1 id="三、HttpSession-域"><a href="#三、HttpSession-域" class="headerlink" title="三、HttpSession 域"></a>三、HttpSession 域</h1><h2 id="1-生命周期：-2"><a href="#1-生命周期：-2" class="headerlink" title="1.生命周期："></a>1.生命周期：</h2><p>在第一次调用request.getSession()方法时，服务器会检查是否已经有对应的session，如果没有就在内存中创建一个session并返回。</p>
+<ol>
+<li>当一段时间内session没有被使用（默认为30分钟），则服务器会销毁该session。</li>
+<li>如果服务器非正常关闭，没有到期的session也会跟着销毁。</li>
+<li>如果调用session提供的invalidate()，可以立即销毁session。用户打开浏览器访问，创建session（开始），session超时或者被声明失效，该对象生命周期结束；</li>
+</ol>
+<h2 id="2-作用范围：-2"><a href="#2-作用范围：-2" class="headerlink" title="2.作用范围："></a>2.作用范围：</h2><p><strong>一次会话</strong>。HttpSession在服务器中，为浏览器创建独一无二的内存空间，在其中保存会话相关的信息.</p>
+<p>注意：服务器正常关闭，再启动，Session对象会进行钝化和活化操作。同时如果服务器钝化的时间在session 默认销毁时间之内， 则活化后session还是存在的。否则Session不存在。  如果JavaBean 数据在session钝化时，没有实现Serializable 则当Session活化时，会消失。</p>
+<h1 id="四、ServletContext"><a href="#四、ServletContext" class="headerlink" title="四、ServletContext"></a>四、ServletContext</h1><h2 id="1-生命周期：-3"><a href="#1-生命周期：-3" class="headerlink" title="1.生命周期："></a>1.生命周期：</h2><ul>
+<li>当WEB应用被加载进容器创建代表整个WEB应用的ServletContext对象；</li>
+<li>当服务器关闭或WEB应用被移除时，ServletContext对象跟着被销毁。</li>
+</ul>
+<h2 id="2-作用范围：-3"><a href="#2-作用范围：-3" class="headerlink" title="2.作用范围："></a>2.作用范围：</h2><p><strong>整个WEB应用</strong></p>
+<h2 id="3、作用："><a href="#3、作用：" class="headerlink" title="3、作用："></a>3、作用：</h2><h3 id="在不同Servlet-之间转发"><a href="#在不同Servlet-之间转发" class="headerlink" title="在不同Servlet 之间转发"></a>在不同Servlet 之间转发</h3><p>this.getServletContext().getRequestDispatcher(“/servlet/Demo10Servlet”).forward(request,response); </p>
+<p>方法执行结束，service就会返回到服务器，再有服务器去调用目标servlet，其中request会重新创建，并将之前的request的数据拷贝进去。    </p>
+<h3 id="读取资源文件。"><a href="#读取资源文件。" class="headerlink" title="读取资源文件。"></a>读取资源文件。</h3><ol>
+<li>由于相对路径默认相对的是java虚拟机启动的目录，所以我们直接写相对路径将会是相对于tomcat/bin目录，所以是拿不到资源的。如果写成绝对路径，当项目发布到其他环境时，绝对路径就错了。  </li>
+<li>为了解决这个问题ServletContext提供了：<br>this.<strong>getServletContext</strong>().getRealPath(“/1.properties”)，<strong>给进一个资源的虚拟路径，将会返回该资源在当前环境下的真实路径</strong>。</li>
+</ol>
+<p>this.<strong>getServletContext</strong>().getResourceAsStream(“/1.properties”)，<strong>给一个资源的虚拟路径返回到该资源真实路径的流</strong>。</p>
+<p>当在非servlet下获取资源文件时，就没有ServletContext对象用了，此时只能用类加载器<br><strong>classLoader</strong>.getResourceAsStream(“../../1.properties”)，<strong>此方法利用类加载器直接将资源加载到内存中，有更新延迟的问题，以及如果文件太大，占用内存过大</strong>。 </p>
+<p>classLoader.getResource(“../1.properties”).getPath()，直接返回资源的真实路径，没有更新延迟的问题。</p>
+<h3 id="九大隐式对象"><a href="#九大隐式对象" class="headerlink" title="九大隐式对象"></a>九大隐式对象</h3><p><strong>request</strong>、</p>
+<p><strong>response</strong>、</p>
+<p><strong>session</strong>、</p>
+<p><strong>application</strong>、</p>
+<p><strong>config</strong>、</p>
+<p><strong>page</strong>、</p>
+<p><strong>pageContext</strong>、</p>
+<p><strong>out</strong>、</p>
+<p><strong>exception</strong></p>
+
       
     </div>
     
@@ -354,6 +449,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/域对象/" rel="tag"># 域对象</a>
+          
+            <a href="/tags/隐式对象/" rel="tag"># 隐式对象</a>
+          
+        </div>
       
 
       
@@ -428,8 +531,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -470,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -493,6 +605,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#四大域对象"><span class="nav-number">1.</span> <span class="nav-text">四大域对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PageContext域"><span class="nav-number">2.</span> <span class="nav-text">PageContext域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-生命周期："><span class="nav-number">2.1.</span> <span class="nav-text">1.生命周期：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-作用范围："><span class="nav-number">2.2.</span> <span class="nav-text">2.作用范围：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-作用："><span class="nav-number">2.3.</span> <span class="nav-text">3.作用：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pageContext-中代表域的常量"><span class="nav-number">2.3.1.</span> <span class="nav-text">pageContext 中代表域的常量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Request域"><span class="nav-number">3.</span> <span class="nav-text">二、Request域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-生命周期：-1"><span class="nav-number">3.1.</span> <span class="nav-text">1.生命周期：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-作用范围：-1"><span class="nav-number">3.2.</span> <span class="nav-text">2.作用范围：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-作用：-1"><span class="nav-number">3.3.</span> <span class="nav-text">3.作用：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、HttpSession-域"><span class="nav-number">4.</span> <span class="nav-text">三、HttpSession 域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-生命周期：-2"><span class="nav-number">4.1.</span> <span class="nav-text">1.生命周期：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-作用范围：-2"><span class="nav-number">4.2.</span> <span class="nav-text">2.作用范围：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、ServletContext"><span class="nav-number">5.</span> <span class="nav-text">四、ServletContext</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-生命周期：-3"><span class="nav-number">5.1.</span> <span class="nav-text">1.生命周期：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-作用范围：-3"><span class="nav-number">5.2.</span> <span class="nav-text">2.作用范围：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、作用："><span class="nav-number">5.3.</span> <span class="nav-text">3、作用：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在不同Servlet-之间转发"><span class="nav-number">5.3.1.</span> <span class="nav-text">在不同Servlet 之间转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取资源文件。"><span class="nav-number">5.3.2.</span> <span class="nav-text">读取资源文件。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九大隐式对象"><span class="nav-number">5.3.3.</span> <span class="nav-text">九大隐式对象</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
