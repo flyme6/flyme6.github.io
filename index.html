@@ -273,6 +273,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://flyme6.github.io/2019/02/19/IntelliJ-IDEA-使用-lombok-减少冗长代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="flyme">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/31469516">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="flyme-星辰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/19/IntelliJ-IDEA-使用-lombok-减少冗长代码/" itemprop="url">IntelliJ IDEA 使用 lombok 减少冗长代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-19T10:40:26+08:00">
+                2019-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/flyme/" itemprop="url" rel="index">
+                    <span itemprop="name">flyme</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用 lombok, 可以通过一些简单的注解直接生成我们所需要的代码, 能极大的提高开发体验.</p>
+<p>对于 POJO（plain ordinary java object 无规则简单java对象）, 我们需要为其中的每个字段生成 getter,setter 方法, 虽然能够使用 IDE 快速为我们生成. 但如果需要修改字段名称及字段类型, 那么就需要删除在重新进行生成, 终究还是有一些不方便. 如果</p>
+<p>作者：jnil<br>链接：<a href="https://www.jianshu.com/p/f26d177b88be" target="_blank" rel="noopener">https://www.jianshu.com/p/f26d177b88be</a><br>來源：简书<br>简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://flyme6.github.io/2019/02/18/利用quartz进行定时迁移表部分数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -366,7 +510,13 @@
       
         
           
-            <p>正在构造中…</p>
+            <p>场景：数据处理完成之后，将每次处理完成之后的部分有效数据以及标识，存储于mysql中，用于展示数据是否正常，业务是否正常运行，而且数据处理完之后存储的库和前端应用展示的库不同。这样做的目的，彼此互补干个。</p>
+<p>每次后端数据处理完之后，将有效数据存储于mysql中。前端应用进行定期查询，并且把读取到的有效数据，存储于前端应用库中。</p>
+<p>需求：每天早上9点需要将 log表中 的部分字段 插入到user表中。</p>
+<p>技术使用：多数据源的切换。quartz框架使用。</p>
+<p>首先肯定需要一个job类，用于进行定时启动该job</p>
+<p>材料以及说明：2个表不是同一个库，其中log表，处于A库中，use表处于B库中。</p>
+<p>先查询log表中，查询是否有需要的数据，如果有，进行对use插入，否则，也插入。并且对插入的数据进行打标识。通过true和false进行区别。</p>
 
           
         
@@ -1582,156 +1732,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://flyme6.github.io/2019/01/04/java四大域对象总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="flyme">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/31469516">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="flyme-星辰">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/04/java四大域对象总结/" itemprop="url">java四大域对象总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T11:31:03+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/flyme/" itemprop="url" rel="index">
-                    <span itemprop="name">flyme</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>四大域对象</p>
-<p> <strong>page</strong>域、<strong>request</strong>域、<strong>session</strong>域、<strong>application</strong>域</p>
-<p>九大隐式对象</p>
-<p><strong>request</strong>、<strong>response</strong>、<strong>session</strong>、<strong>application</strong>、<strong>config</strong>、<strong>page</strong>、<strong>pageContext</strong>、<strong>out</strong>、<strong>exception</strong></p>
-<p>最后更新时间： 2019年1月13日22:55:39</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/04/java四大域对象总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1786,7 +1786,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

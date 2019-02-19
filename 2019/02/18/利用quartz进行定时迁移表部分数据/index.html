@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="正在构造中…">
+<meta name="description" content="场景：数据处理完成之后，将每次处理完成之后的部分有效数据以及标识，存储于mysql中，用于展示数据是否正常，业务是否正常运行，而且数据处理完之后存储的库和前端应用展示的库不同。这样做的目的，彼此互补干个。 每次后端数据处理完之后，将有效数据存储于mysql中。前端应用进行定期查询，并且把读取到的有效数据，存储于前端应用库中。 需求：每天早上9点需要将 log表中 的部分字段 插入到user表中。">
 <meta name="keywords" content="quartz,业务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用quartz进行定时迁移表部分数据">
 <meta property="og:url" content="https://flyme6.github.io/2019/02/18/利用quartz进行定时迁移表部分数据/index.html">
 <meta property="og:site_name" content="flyme-星辰">
-<meta property="og:description" content="正在构造中…">
+<meta property="og:description" content="场景：数据处理完成之后，将每次处理完成之后的部分有效数据以及标识，存储于mysql中，用于展示数据是否正常，业务是否正常运行，而且数据处理完之后存储的库和前端应用展示的库不同。这样做的目的，彼此互补干个。 每次后端数据处理完之后，将有效数据存储于mysql中。前端应用进行定期查询，并且把读取到的有效数据，存储于前端应用库中。 需求：每天早上9点需要将 log表中 的部分字段 插入到user表中。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-18T09:41:38.664Z">
+<meta property="og:updated_time" content="2019-02-19T10:06:05.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用quartz进行定时迁移表部分数据">
-<meta name="twitter:description" content="正在构造中…">
+<meta name="twitter:description" content="场景：数据处理完成之后，将每次处理完成之后的部分有效数据以及标识，存储于mysql中，用于展示数据是否正常，业务是否正常运行，而且数据处理完之后存储的库和前端应用展示的库不同。这样做的目的，彼此互补干个。 每次后端数据处理完之后，将有效数据存储于mysql中。前端应用进行定期查询，并且把读取到的有效数据，存储于前端应用库中。 需求：每天早上9点需要将 log表中 的部分字段 插入到user表中。">
 
 
 
@@ -362,7 +362,13 @@
       
 
       
-        <p>正在构造中…</p>
+        <p>场景：数据处理完成之后，将每次处理完成之后的部分有效数据以及标识，存储于mysql中，用于展示数据是否正常，业务是否正常运行，而且数据处理完之后存储的库和前端应用展示的库不同。这样做的目的，彼此互补干个。</p>
+<p>每次后端数据处理完之后，将有效数据存储于mysql中。前端应用进行定期查询，并且把读取到的有效数据，存储于前端应用库中。</p>
+<p>需求：每天早上9点需要将 log表中 的部分字段 插入到user表中。</p>
+<p>技术使用：多数据源的切换。quartz框架使用。</p>
+<p>首先肯定需要一个job类，用于进行定时启动该job</p>
+<p>材料以及说明：2个表不是同一个库，其中log表，处于A库中，use表处于B库中。</p>
+<p>先查询log表中，查询是否有需要的数据，如果有，进行对use插入，否则，也插入。并且对插入的数据进行打标识。通过true和false进行区别。</p>
 
       
     </div>
@@ -404,6 +410,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/19/IntelliJ-IDEA-使用-lombok-减少冗长代码/" rel="prev" title="IntelliJ IDEA 使用 lombok 减少冗长代码">
+                IntelliJ IDEA 使用 lombok 减少冗长代码 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -475,7 +485,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
