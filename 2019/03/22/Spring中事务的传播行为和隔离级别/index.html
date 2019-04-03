@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="flyme-星辰">
 <meta property="og:description" content="propagation：用来设置事务的传播行为    一个方法运行在 另一个已经开启事务的方法中，当前方法是使用本身的事务还是开启一个新到的事务  #### Propagation.REQUIRED 默认值，使用原来的事务  1@Transactional(propagation = Propagation.REQUIRED)  #### Propagation.REQUIRED_NEW，将原来的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-22T07:48:46.987Z">
+<meta property="og:updated_time" content="2019-03-28T09:47:15.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring中事务的传播行为和隔离级别">
 <meta name="twitter:description" content="propagation：用来设置事务的传播行为    一个方法运行在 另一个已经开启事务的方法中，当前方法是使用本身的事务还是开启一个新到的事务  #### Propagation.REQUIRED 默认值，使用原来的事务  1@Transactional(propagation = Propagation.REQUIRED)  #### Propagation.REQUIRED_NEW，将原来的">
@@ -371,7 +371,9 @@
 #### Propagation.REQUIRED_NEW，将原来的事务挂起，开启一个新的事务
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Transactional(propagation = Propagation.REQUIRES_NEW)</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="isolation：用来设置事务的隔离级别"><a href="#isolation：用来设置事务的隔离级别" class="headerlink" title="isolation：用来设置事务的隔离级别"></a>isolation：用来设置事务的隔离级别</h2><pre><code>#### Isolation.REPEABLE_READ，可重复读。 MySql默认的隔离级别
+</code></pre><p>最后更新时间： 2019年3月28日17:47:14</p>
+<a id="more"></a>
+<h2 id="isolation：用来设置事务的隔离级别"><a href="#isolation：用来设置事务的隔离级别" class="headerlink" title="isolation：用来设置事务的隔离级别"></a>isolation：用来设置事务的隔离级别</h2><pre><code>#### Isolation.REPEABLE_READ，可重复读。 MySql默认的隔离级别
 
 #### Isolation.READ_COMMITTED，读已提交，Oracle默认的隔离级别，开发时通常使用的隔离级别
 </code></pre><h4 id="数据库事务并发问题"><a href="#数据库事务并发问题" class="headerlink" title="数据库事务并发问题"></a>数据库事务并发问题</h4><p> 脏读</p>

@@ -509,8 +509,7 @@
 
       
         
-          
-            <h2 id="propagation：用来设置事务的传播行为"><a href="#propagation：用来设置事务的传播行为" class="headerlink" title="propagation：用来设置事务的传播行为"></a>propagation：用来设置事务的传播行为</h2><pre><code>    一个方法运行在 另一个已经开启事务的方法中，当前方法是使用本身的事务还是开启一个新到的事务
+          <h2 id="propagation：用来设置事务的传播行为"><a href="#propagation：用来设置事务的传播行为" class="headerlink" title="propagation：用来设置事务的传播行为"></a>propagation：用来设置事务的传播行为</h2><pre><code>    一个方法运行在 另一个已经开启事务的方法中，当前方法是使用本身的事务还是开启一个新到的事务
 
 #### Propagation.REQUIRED 默认值，使用原来的事务
 
@@ -519,17 +518,14 @@
 #### Propagation.REQUIRED_NEW，将原来的事务挂起，开启一个新的事务
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Transactional(propagation = Propagation.REQUIRES_NEW)</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="isolation：用来设置事务的隔离级别"><a href="#isolation：用来设置事务的隔离级别" class="headerlink" title="isolation：用来设置事务的隔离级别"></a>isolation：用来设置事务的隔离级别</h2><pre><code>#### Isolation.REPEABLE_READ，可重复读。 MySql默认的隔离级别
-
-#### Isolation.READ_COMMITTED，读已提交，Oracle默认的隔离级别，开发时通常使用的隔离级别
-</code></pre><h4 id="数据库事务并发问题"><a href="#数据库事务并发问题" class="headerlink" title="数据库事务并发问题"></a>数据库事务并发问题</h4><p> 脏读</p>
-<p> 不可重复读</p>
-<p> 幻读</p>
-<h4 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h4><p> 读未提交</p>
-<p> 读已提交</p>
-<p> 可重复读</p>
-<h5 id="串行化"><a href="#串行化" class="headerlink" title="串行化"></a>串行化</h5>
-          
+</code></pre><p>最后更新时间： 2019年3月28日17:47:14</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/22/Spring中事务的传播行为和隔离级别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
